@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sihirli 8 Top</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .magic-ball {
+            width: 200px;
+            height: 200px;
+            background: black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            margin-bottom: 20px; /* Top ile soru çubuğu arasına boşluk ekler */
+        }
+        .answer {
+            position: absolute;
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            width: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sihirli 8 Top</h1>
+    <div class="magic-ball" onclick="askMagic8Ball()">
+        <div class="answer" id="answer">8</div>
+    </div>
+    <input type="text" id="question" placeholder="Sorunuzu yazın...">
+    <button onclick="askMagic8Ball()">Sor</button>
+
+    <script>
+        const responses = [
+            { text: "Kesinlikle evet", color: "#ffadad" },
+            { text: "Şüphesiz", color: "#ffd6a5" },
+            { text: "Evet, kesinlikle", color: "#fdffb6" },
+            { text: "Büyük ihtimalle", color: "#caffbf" },
+            { text: "Görünüşe göre evet", color: "#9bf6ff" },
+            { text: "Evet", color: "#a0c4ff" },
+            { text: "İşaretler eveti gösteriyor", color: "#bdb2ff" },
+            { text: "Bulanık, tekrar dene", color: "#ffc6ff" },
+            { text: "Şimdi söyleyemem", color: "#ffdeab" },
+            { text: "Şimdi tahmin edemem", color: "#ff9aa2" },
+            { text: "Konsantre ol ve tekrar sor", color: "#ffdac1" },
+            { text: "Buna güvenme", color: "#e2f0cb" },
+            { text: "Cevabım hayır", color: "#b5ead7" },
+            { text: "Kaynaklarım hayır diyor", color: "#c7ceea" },
+            { text: "Görünüşe göre hayır", color: "#d4a5a5" },
+            { text: "Çok şüpheli", color: "#9d8189" },
+            { text: "Belki", color: "#ff6b6b" },
+            { text: "Daha sonra sor", color: "#ffcc5c" },
+            { text: "Olmaz", color: "#fcf8e8" },
+            { text: "Şimdilik bilmiyorum", color: "#d2e0fb" },
+            { text: "Emin değilim", color: "#b8bedd" },
+            { text: "Güzel soru", color: "#f4978e" },
+            { text: "Olabilir", color: "#f7a072" },
+            { text: "İmkansız", color: "#ffcb77" },
+            { text: "Asla", color: "#aa96da" },
+            { text: "Daha sonra dene", color: "#dac4f7" },
+            { text: "Güzel fikir değil", color: "#9cadce" },
+            { text: "Belirsiz", color: "#84a59d" },
+            { text: "Tam olarak bilemem", color: "#f28482" },
+            { text: "Bu sorunun cevabı yok", color: "#f7ede2" }
+        ];
+
+        function askMagic8Ball() {
+            const question = document.getElementById("question").value.trim();
+            if (question === "") {
+                alert("Lütfen bir soru girin!");
+                return;
+            }
+            const randomIndex = Math.floor(Math.random() * responses.length);
+            const response = responses[randomIndex];
+            const answerElement = document.getElementById("answer");
+            answerElement.textContent = response.text;
+            document.body.style.backgroundColor = response.color;
+
+            setTimeout(() => {
+                answerElement.textContent = "8";
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
